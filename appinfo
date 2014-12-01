@@ -1,0 +1,22 @@
+plugin_ID:791
+plugin_Name:ExtremeSVN
+plugin_VersionName: 1.0.1.68
+plugin_VersionCode: 01000168
+plugin_RomVersionH: 9.9.9.9
+plugin_RomVersionL: 1.0.0.7
+plugin_MobVersionH: 9.9
+plugin_MobVersionL: 1.0
+plugin_XPKGVersion: 1.0
+plugin_IntallPath: /opt/app/ExtremeSubversion/
+plugin_Source: 1
+plugin_Autorun: 2
+plugin_Space: 3493789
+plugin_MD5: 89b1721bd827ad42ae8a9eaf72f2e5b5
+plugin_Info: 版本控制服务器（Extreme Subversion）
+plugin_Author:  Dragon, www.bdmod.com
+plugin_Officeapp: 0
+plugin_State: 2
+plugin_Largeicon:/opt/app/helloworld/icon/large.jpg
+plugin_Smallicon:/opt/app/helloworld/icon/small.png
+plugin_InstallDate: 2013-11-1 02:01:01
+ 

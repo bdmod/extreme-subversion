@@ -1,0 +1,1316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Extreme版本控制服务器 - Extreme Subversion</title>
+	<script type='text/javascript' src='jqscripts'></script>
+		<style type='text/css'>
+			*{
+				margin:0 0;
+				padding:0 0;
+				font-family:'微软雅黑';
+			}
+.repo-td {
+	height: 27px;
+	font-family: verdana, tahoma, arial, helvetica, sans-serif;
+	line-height: 27px;
+	cursor:default;
+}
+
+			a{
+				text-decoration:none;
+			}
+			
+			ul{
+				list-style-type: none;
+			}
+
+			body{
+				background:#ededed;
+			}
+
+			.nav{
+				height:63px;
+				background:url('comimg?path=title_box.jpg') repeat-x center;
+			}
+
+			.common {
+				width: 940px;
+				margin: 0 auto;
+			}
+
+			.nav .nav_head .logo{
+				display: block;
+				float: left;
+				margin-top: 10px;
+				width: 112px;
+				height: 40px;
+				background: url('comimg?path=logo2.png') no-repeat center;
+			}
+
+			.nav .nav_head .logo_plugin{
+				display: block;
+				float: right;
+				margin-top: 3px;
+			}
+			
+			.navigation {
+				width: 940px;
+				height: 54px;
+				margin: 54px auto;
+				background: url('comimg?path=fast_box.png') no-repeat center;
+			}
+
+			.navigation .navigation_title {
+				color: #666;
+				padding-top: 15px;
+				padding-left: 17px;
+			}
+
+			.navigation .navigation_title a{
+				color:#666;
+			}
+
+			.demo_content{
+	width:940px;
+	min-height:450px;
+	margin:0 auto;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #e0e0e0;
+	border-bottom-color: #e0e0e0;
+	border-left-color: #e0e0e0;
+	background-color: white;
+			}
+			
+			.demo_content_bottom{
+	width:940px;
+	margin:0 auto;
+			}
+
+			.demo_content .demo_box{
+	width:380px;
+	min-height:380px;
+	margin-top:50px;
+			}
+
+			.demo_content .demo_left{
+	float:left;
+	margin-left:50px;
+	margin-bottom:20px;
+	position: relative;		/*fix z-index*/
+			}
+
+			.demo_content .demo_right{
+	float:right;
+	margin-right:50px;
+	position: relative;
+			}
+
+			.demo_config{
+	width:370px;
+	color:#666;
+	visibility: visible;
+			}
+
+			.demo_config ul li{
+				margin-top:20px;
+				width:260px;
+				height: 40px;
+			}
+
+			.demo_left_span{
+	display: block;
+	float:left;
+	width:100px;
+	margin-top:8px;
+			}
+
+			.demo_right_input{
+	display: block;
+	float: right;
+	width:150px;
+	height:25px;
+	margin-top: 5px;
+			}
+
+			.demo_btn{
+				display: block;
+				width:66px;
+				height:26px;
+				background: url('customimg?path=ExtremeSubversion/html/button1.png');
+				/*background: url('button1.png');*/
+				text-align: center;
+			}
+
+			.demo_btn:hover{
+				background: url('customimg?path=ExtremeSubversion/html/button1_click.png');	
+				/*background: url('button1_click.png');*/	
+			}
+
+			.demo_btn b{
+				display: block;
+				font-weight: 300;
+				font-size:14px;
+				color:white;
+				padding-top:2px;
+			}
+
+			
+			.author{
+	width: 125px;
+	position: absolute;
+	bottom: 20px;
+	right: 50px;
+	font-size: 14px;
+	text-align: right;
+	color: #666;
+			}
+			
+			.runstatus{
+	float:right;
+	color: #F00;
+	margin-top:110px;
+			}
+			
+			.progress{
+				position: absolute;
+				bottom: 0px;
+				right: 0px;
+			}
+
+			.start_thread,.stop_thread {
+				margin-left:15px;
+				margin-top:110px;
+				float:left;
+			}
+			
+			.btn_add {
+				margin-right:15px;
+				margin-bottom:8px;
+				float:left;
+			}
+			
+			.downloadpcapp{
+	float:left;
+	margin-left:5px;
+	margin-top: 2px;
+			}
+			
+			.downloadbox{
+				 border-color:#ccc; 
+				 border-width:1px; 
+				 border-top-style:solid;
+				 border-bottom-style:solid;
+				 border-left-style:none; 
+				 border-right-style:none; 
+				 margin-top:90px;
+				 height:68px;
+			}
+			
+		.reposlist {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #CCC;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+}
+
+		.repos {
+	float:left;
+	padding-left:4px;
+		}
+		
+		.repos a{
+			font-weight:bold;
+			color:#666;
+		}
+		
+		.reposlogo {
+	float:left;
+	margin-top:3px;
+	margin-left:4px;
+		}
+		
+		.reposrev {
+	float:left;
+	padding-left:4px;
+	color:#999;
+		}
+		
+		.reposcmd {
+	float:right;
+	margin-top:3px;
+	margin-right:4px;
+	visibility:hidden;
+		}
+		
+		.member-login
+		{
+			width: 350px;
+			position: relative;
+		}
+
+.login
+{
+	background: #FFF;
+	-webkit-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-moz-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.formtitle {
+	padding: 1em;
+	line-height: 16px;
+	font-size: 1.2em;
+	color: #162a02;
+	border-bottom: 1px solid #cdcdcd;
+	background: rgb(241,241,241);
+	background: -moz-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%, rgb(237,237,237) 14%, rgb(210,210,210) 81%, rgb(205,205,205) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(241,241,241)), color-stop(14%,rgb(237,237,237)), color-stop(81%,rgb(210,210,210)), color-stop(100%,rgb(205,205,205)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: radial-gradient(ellipse at center,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#cdcdcd',GradientType=1 );
+}
+.top_section {
+	border-bottom: 1px solid #DDD;
+}
+.input
+{
+	border-bottom: 1px solid #DDD;
+	padding-left: 20px;
+}
+.input select
+{
+	border-bottom: 1px solid #DDD;
+	padding: 11px 11px 11px 0px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #87aa32;
+	width: 240px;
+	margin: 0;
+	font-size:0.9em;
+	outline: none;
+	font-weight: 600;
+}
+.input input[type="text"]{
+	padding: 11px 11px 11px 0px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #87aa32;
+	width: 220px;
+	margin: 0;
+	font-size:0.9em;
+	outline: none;
+	font-weight: 600;
+}
+.input input[type="password"] {
+	padding: 11.5px 11px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #e20000;
+	width: 83%;
+	margin: 0;
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.9em;
+	font-weight: 600;
+}
+.input span {
+	vertical-align: middle;
+}
+.buttons
+{
+	padding: 0.5em 0.8em;
+}
+/*.buttons a {
+	color:#b3b3b3;
+	font-size: 0.96em;
+	text-decoration: none;
+	line-height: 12px;
+	float:left;
+	padding: 0.8em 0em;
+}*/
+
+.sign
+{
+	background: #FFF;
+	-webkit-box-shadow: 3px 3px 6px 2px #2C2C2C;
+	-moz-box-shadow: 3px 3px 6px 2px #2C2C2C;
+	box-shadow: 3px 3px 6px 2px #2C2C2C;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.sign_up
+{
+	width:500px;
+	position: relative;
+	margin: auto;
+}
+.input-sign input[type="text"],.input-sign input[type="email"]  {
+	padding: 11px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #87aa32;
+	width: 93%;
+	margin: 0;
+	font-size:0.9em;
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	border-bottom: 1px solid #DDD;
+}
+.details1
+{
+	float: left;
+	width:46%;
+	border-left: 1px solid #
+}
+.details
+{
+	float: left;
+	width:46%;
+}
+.details input[type="text"],.details1 input[type="text"]
+{
+	color:#747474;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.details input[type="text"]:hover
+{
+	color:#f2871e;
+	border: 1px solid #ffd0a1;
+}
+.details1 input[type="text"]:hover
+{
+	color:#f2871e;
+	border: 1px solid #ffd0a1;
+}
+
+.clear{clear:both;}/* clear float */
+
+.div_overlay
+ {
+             display:none;
+             position: fixed;
+             top: 0%;
+             left: 0%;
+             width: 100%;
+             height: 100%;
+             background-color: black;
+             z-index:1010;
+             -moz-opacity: 0.6;
+             opacity:.60;
+             filter: alpha(opacity=60);
+ }
+ 
+        .formtitle1 {	padding: 1em;
+	line-height: 16px;
+	font-size: 1.2em;
+	color: #162a02;
+	border-bottom: 1px solid #cdcdcd;
+	background: rgb(241,241,241);
+	background: -moz-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%, rgb(237,237,237) 14%, rgb(210,210,210) 81%, rgb(205,205,205) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(241,241,241)), color-stop(14%,rgb(237,237,237)), color-stop(81%,rgb(210,210,210)), color-stop(100%,rgb(205,205,205)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: radial-gradient(ellipse at center,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#cdcdcd',GradientType=1 );
+}
+.login1 {	background: #FFF;
+	-webkit-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-moz-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+        .formtitle11 {padding: 1em;
+	line-height: 16px;
+	font-size: 1.2em;
+	color: #162a02;
+	border-bottom: 1px solid #cdcdcd;
+	background: rgb(241,241,241);
+	background: -moz-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%, rgb(237,237,237) 14%, rgb(210,210,210) 81%, rgb(205,205,205) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(241,241,241)), color-stop(14%,rgb(237,237,237)), color-stop(81%,rgb(210,210,210)), color-stop(100%,rgb(205,205,205)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: radial-gradient(ellipse at center,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#cdcdcd',GradientType=1 );
+}
+.login11 {background: #FFF;
+	-webkit-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-moz-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+        </style>
+        
+<script type="text/javascript">
+	function setColor(t) {
+		$("table").find("tr").css('background-color','white');
+		$("div.reposcmd").css('visibility','hidden');
+		t.style.backgroundColor='#eee';
+		$('div.reposcmd',t).css('visibility','visible');
+		id = $("div.repos",t).text();
+		$("#reposid").val(id);
+	}
+	
+	function MM_swapImgRestore() { //v3.0
+	  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+	}
+	function MM_preloadImages() { //v3.0
+	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+		var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+		if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+	
+	function MM_swapImage() { //v3.0
+	  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+	   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+	}
+</script>
+
+
+</head>
+<body onload="MM_preloadImages('customimg?path=ExtremeSubversion/html/on.png','customimg?path=ExtremeSubversion/html/plugin-hover.png','customimg?path=ExtremeSubversion/html/windows_hover.png','customimg?path=ExtremeSubversion/html/mac_hover.png','customimg?path=ExtremeSubversion/html/linux_hover.png','customimg?path=ExtremeSubversion/html/help_hover.png','customimg?path=ExtremeSubversion/html/upgrade_hover.png')">
+<div class='nav'>
+			<div class='nav_head common'>
+				<a href='http://r.xcloud.cc' target='_blank' class='logo' title="小云官网"></a>
+                <a href='http://www.xcloud.cc/newweb/download_plugin.html' target='_blank' class='logo_plugin' title="应用商店" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image_plugin','','customimg?path=ExtremeSubversion/html/plugin-hover.png',1)"><img src="customimg?path=ExtremeSubversion/html/plugin-normal.png" alt="应用商店" name="Image_plugin" width="57" height="55" border="0" id="Image_plugin" /></a>
+				<span class='version'></span>
+				<a href='javascript:void(0)' id='getupdate' class='getupdate'><span class='getupdate_def'></span></a>
+				<span class='updatewords'></span>
+			</div>
+		</div>
+
+		<div class="navigation">
+			<div class="navigation_title">
+				<a href="comreturn">主页</a> >> Extreme版本控制服务器（Extreme Subversion）
+                <div class="versionNum" style="float: right; margin-right:10px; color: #999;">...</div>
+		  </div>
+		</div>
+		
+		<div class="demo_content" style="position:relative;">
+        	<div style="position:absolute; right:-1px; top:0px;"><img src="customimg?path=ExtremeSubversion/html/cloud.png" width="942" height="157" /></div>
+		  <div class='demo_box demo_left'>
+				<div class='demo_config'>
+					
+                    <a href='javascript:void(0)' style="float:left" class='demo_btn btn_add'><b>新 增</b></a>
+<!--                    <a href='javascript:void(0)' style="float:left" class='demo_btn btn_del'><b>删除</b></a>
+                    <a href='javascript:void(0)' style="float:left" class='demo_btn btn_edit'><b>编辑</b></a>-->
+                    <table id="tablerepos" style="font-size:12px; float:left" width="100%" border="0" cellpadding="0" cellspacing="0" class="reposlist">
+<!--<tr onClick="setColor(this);">
+    <td class="repo-td"><div class="reposlogo"><img src="repos.png" /></div><div class='repos'>MobileOA</div><div class="reposcmd"><img class="btn_edit" src="reposedit.png" /><img class="btn_users" src="reposuser.png" /><img class="btn_del" src="reposdel.png" /></div></td>
+  </tr>
+  <tr onClick="setColor(this);">
+    <td class="repo-td"><div class="reposlogo"><img src="repos.png" /></div><div class='repos'>Repos2</div><div class="reposcmd"><img class="btn_edit" src="reposedit.png" /><img class="btn_users" src="reposuser.png" /><img class="btn_del" src="reposdel.png" /></div></td>
+  </tr>
+  <tr onClick="setColor(this);">
+    <td class="repo-td"><div class="reposlogo"><img src="repos.png" /></div><div class='repos'>Repos3</div><div class="reposcmd"><img class="btn_edit" src="reposedit.png" /><img class="btn_users" src="reposuser.png" /><img class="btn_del" src="reposdel.png" /></div></td>
+  </tr>-->
+</table>
+
+                    
+			  </div>
+			</div>
+			<div class='demo_box demo_right demo_flag' rel='0'>
+            <div class="runstatus"><img id="img_runstatus" src="customimg?path=ExtremeSubversion/html/off.png" width="82" height="28" /></div>
+				<a href='javascript:void(0)' class='demo_btn start_thread'><b>启 动</b></a>
+				<a href='javascript:void(0)' class='demo_btn stop_thread'><b>停 止</b></a>
+                <!--<a href="http://tortoisesvn.net/downloads.html" target="_blank" class='downloadpcapp'><img src="customimg?path=ExtremeSubversion/html/down_win.png" border="0px" alt="点击下载客户端"></a>-->
+                <!--<a href="http://tortoisesvn.net/downloads.html" target="_blank" class='demo_btn downloadpcapp'><b>客户端</b></a>-->
+                <div class="clear"></div>
+                <div class="downloadbox">
+                <a href="http://tortoisesvn.net/downloads.html" target="_blank" class='downloadpcapp' title="下载Windows客户端" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_dld_windows','','customimg?path=ExtremeSubversion/html/windows_hover.png',1)"><img src="customimg?path=ExtremeSubversion/html/windows_normal.png" alt="下载Windows客户端" name="Img_dld_windows" width="64" height="64" border="0" id="Img_dld_windows" /></a>
+              <a href="http://www.wandisco.com/subversion/download#smartsvn_osx" target="_blank" class='downloadpcapp' title="下载Mac客户端"  onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_dld_mac','','customimg?path=ExtremeSubversion/html/mac_hover.png',1)"><img src="customimg?path=ExtremeSubversion/html/mac_normal.png" alt="下载Mac客户端" name="Img_dld_mac" width="64" height="64" border="0" id="Img_dld_mac" /></a>
+              <a href="http://www.wandisco.com/subversion/download#smartsvn_linux" target="_blank" class='downloadpcapp' title="下载Linux客户端" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_dld_linux','','customimg?path=ExtremeSubversion/html/linux_hover.png',1)"><img src="customimg?path=ExtremeSubversion/html/linux_normal.png" alt="下载Linux客户端" name="Img_dld_linux" width="64" height="64" border="0" id="Img_dld_linux" /></a>
+              <a href="http://xcloud.bdmod.com/ExtremeSubversion/help.html" target="_blank" class='downloadpcapp' title="帮助" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_help','','customimg?path=ExtremeSubversion/html/help_hover.png',1)"><img src="customimg?path=ExtremeSubversion/html/help_normal.png" alt="帮助" name="Img_help" width="64" height="64" border="0" id="Img_help" /></a>
+              <a id="upgradeTip" href="http://xcloud.bdmod.com/ExtremeSubversion/" target="_blank" class='downloadpcapp' style="visibility:hidden" title="" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_upgrade','','customimg?path=ExtremeSubversion/html/upgrade_hover.png',1)"><img src="customimg?path=ExtremeSubversion/html/upgrade_normal.png" alt="升级" name="Img_upgrade" width="64" height="64" border="0" id="Img_upgrade" /></a>
+              
+              </div>
+		<!--<div class='author'>Dragon<br/>
+            Extreme M.O.D<br/>
+            <a href="http://www.bdmod.com" target="_blank">www.bdmod.com</a>
+        </div>-->
+              <div class='progress'><img src="customimg?path=ExtremeSubversion/html/progress.gif" width="176" height="220"></div>
+			</div>
+          <div class='author'>Dragon<br/>
+            Extreme M.O.D<br/>
+            <a href="http://www.bdmod.com" target="_blank">www.bdmod.com</a>
+        </div>
+            <div class="clear"></div>
+		</div>
+        <div class="demo_content_bottom"><div style="float:left"><img src="customimg?path=ExtremeSubversion/html/box-shadows-left.png" width="298" height="14"></div><div style="float:right"><img src="customimg?path=ExtremeSubversion/html/box-shadows-right.png" width="298" height="14"></div></div>
+        <div class="clear"></div>
+        
+        <input id="reposid" name="reposid" type="hidden" value="" />
+        
+        <!--add repos-->
+        <div id="form_repos_add" class="member-login" style="position:fixed; left:50%; top:50%; margin:auto; visibility:hidden; z-index:1011;">
+            <div class="login">
+                <div class="formtitle">新增版本库<a href='javascript:void(0)' style="float:right" class="btn_repos_add_close"><img border="0" src="customimg?path=ExtremeSubversion/html/close.png"/></a></div>
+                <div class="input">
+                	<span>版本库名：</span>
+<input type="text" class="cfg_repos_add_name" style="ime-mode:disabled" placeholder="版本库名称" title="只能包含字母、数字、下划线，不超过32个字符" required/> 
+                    <!--<span><img src="select.png"/> </span>-->
+            </div>
+                <div class="input">
+  <span>匿名权限：</span>
+                    <select class="cfg_repos_add_anon">
+                      <option value="none" selected="selected">无</option>
+                      <option value="read">只读</option>
+                      <option value="write">可读写</option>
+                    </select>
+                </div>
+                <div class="buttons" style="height:35px">
+                    <a href="#" style="color:#b3b3b3; float:left; padding-top:6px;text-decoration: none; font-size:14px">提示：版本库不能重名</a>
+                    <a href='javascript:void(0)' style="float:right; margin-top:4px" class='demo_btn btn_addrepos_do'><b>确定</b></a>
+                    <div class="clear"> </div>
+                </div>
+            </div>
+		</div>
+        
+        <!--edit repos-->
+        <div id="form_repos_edit" class="member-login" style="position:fixed; left:50%; top:50%; margin: auto; visibility:hidden; z-index:1012;">
+            <div class="login">
+                <div class="formtitle">编辑版本库<img src="customimg?path=ExtremeSubversion/html/load.gif" style="margin-left:5px;" width="20" height="20" align="absmiddle" class="repos_edit_loading"/><a href='javascript:void(0)' style="float:right" class="btn_repos_edit_close"><img border="0" src="customimg?path=ExtremeSubversion/html/close.png"/></a></div>
+                <div class="input">
+                	<span>版本库名：</span>
+<input type="text" placeholder="版本库名称" class="cfg_repos_edit_name" readonly='readonly' required/> 
+                    <!--<span><img src="select.png"/> </span>-->
+                </div>
+                <div class="input">
+  					<span>匿名权限：</span>
+                    <select class="cfg_repos_edit_anon">
+                      <option value="none" selected="selected">无</option>
+                      <option value="read">只读</option>
+                      <option value="write">可读写</option>
+                    </select>
+                </div>
+                <div class="buttons" style="height:35px">
+                  <a href="#" style="color:#b3b3b3; float:left; padding-top:6px;text-decoration: none; font-size:14px" class="repos_edit_url svn_address_url" title="版本库访问网址">svn://路由器IP/?</a>
+                    <a href='javascript:void(0)' style="float:right; margin-top:4px" class='demo_btn btn_editrepos_do'><b>确定</b></a>
+                    <div class="clear"> </div>
+                </div>
+            </div>
+</div>
+        
+        <!--edit users-->
+<div id="form_users_edit" class="sign_up" style="position:fixed; left:50%; top:50%; visibility:hidden; z-index:1013;">
+          <div class="login11">
+            <div id="users_edit_title" class="formtitle11">编辑用户<img src="customimg?path=ExtremeSubversion/html/load.gif" style="margin-left:5px;" width="20" height="20" align="absmiddle" class="users_edit_loading"/><a href='javascript:void(0)' style="float:right" class="btn_users_edit_close"><img border="0" src="customimg?path=ExtremeSubversion/html/close.png"/></a></div>
+            <div class='section a_user' style='padding-right:0.8em'>
+              <div class='input-sign details'>
+                <input type='text' class='cfg_users_edit_name' readonly='readonly'  placeholder='用户名' required='required'/>
+              </div>
+              <div class='input-sign details1'>
+                <input type='text'  placeholder='密码' class='cfg_users_edit_pwd' required='required' currpwd=''/>
+              </div>
+              <div style='float:right;padding-top:9px; padding-left:7px;'><a href='javascript:void(0)' class='btn_users_edit_del'><img src='customimg?path=ExtremeSubversion/html/minus.png' width='24' height='24' border='0'/></a></div>
+              <div style='clear:both'> </div>
+            </div>
+            <div class="section" style="padding-right:0.8em">
+              <div class="input-sign details">
+                <input type="text" class="cfg_users_add_name" placeholder="用户名" style="ime-mode:disabled" title="用户名：只能包含字母、数字、下划线，不超过32个字符" required="required"/>
+              </div>
+              <div class="input-sign details1">
+                <input type="text"  placeholder="密码" class="cfg_users_add_pwd" style="ime-mode:disabled" title="密码：只能包含字母、数字，不超过32个字符" required="required"/>
+              </div>
+              <div style="float:right;padding-top:9px; padding-left:7px;"><a href='javascript:void(0)' class="btn_users_edit_add"><img src="customimg?path=ExtremeSubversion/html/plus.png" width="24" height="24" border="0" title="添加"/></a></div>
+              <div style="clear:both"> </div>
+            </div>
+            <div class="buttons" style="height:35px"> <a href='javascript:void(0)' style="float:right; margin-top:4px" class='demo_btn btn_users_edit_close'><b>确定</b></a>
+              <div style="clear:both"> </div>
+            </div>
+          </div>
+</div>
+
+<!--delete repos-->
+        <div id="form_repos_delete" class="member-login" style="position:fixed; left:50%; top:50%; margin:auto; visibility:hidden; z-index:1014;">
+            <div class="login">
+                <div class="formtitle">删除版本库<img src="customimg?path=ExtremeSubversion/html/load.gif" style="margin-left:5px;" width="20" height="20" align="absmiddle" class="repos_delete_doing"/><a href='javascript:void(0)' style="float:right" class="btn_repos_delete_close"><img border="0" src="customimg?path=ExtremeSubversion/html/close.png"/></a></div>
+                <div class="input">
+                	<span>版本库名：</span>
+<input type="text" placeholder="版本库名称" class="cfg_repos_delete_name" readonly='readonly' required/> 
+                </div>
+                <div class="buttons" style="height:35px">
+                  <a href="#" style="color:#f00; float:left; padding-top:6px; padding-left:6px; text-decoration: none; font-size:14px" class="repos_delete_url">警告：将无法撤销！请谨慎操作</a>
+                    <a href='javascript:void(0)' style="float:right; margin-top:4px" class='demo_btn btn_deleterepos_do'><b>删除</b></a>
+                    <div class="clear"> </div>
+                </div>
+            </div>
+</div>
+
+
+		<!--manage repos-->
+        <div id="form_repos_manage" class="member-login" style="position:fixed; left:50%; top:50%; margin:auto; visibility:hidden; z-index:1015;">
+            <div class="login">
+                <div class="formtitle">管理版本库<img src="customimg?path=ExtremeSubversion/html/load.gif" style="margin-left:5px;" width="20" height="20" align="absmiddle" class="repos_manage_loading"/><a href='javascript:void(0)' style="float:right" class="btn_repos_manage_close"><img border="0" src="customimg?path=ExtremeSubversion/html/close.png"/></a></div>
+                <div class="input">
+                	<div style="padding-top: 11px; padding-bottom: 11px; padding-right:11px;"><span>库名称：</span><span id="repos_manage_name"></span></div>
+                </div>
+                <div class="input">
+                	<div style="padding-top: 11px; padding-bottom: 11px; padding-right:11px;"><span>库大小：</span><span id="repos_manage_size"></span></div>
+                </div>
+                <div class="input">
+                	<div style="padding-top: 11px; padding-bottom: 11px; padding-right:11px;"><span>作　者：</span><span id="repos_manage_author"></span></div>
+                </div>
+                <div class="input">
+                	<div style="padding-top: 11px; padding-bottom: 11px; padding-right:11px;"><span>版本号：</span><span id="repos_manage_revision"></span></div>
+                </div>
+                <div class="input">
+                	<div style="padding-top: 11px; padding-bottom: 11px; padding-right:11px;"><span>时间戳：</span><span id="repos_manage_timestamp"></span></div>
+                </div>
+                <div class="buttons" style="height:35px">
+                    <a href='javascript:void(0)' style="float:left; margin-top:4px" class='demo_btn btn_repos_manage_pack'><b>打包</b></a>
+                    <a href='javascript:void(0)' style="float:left; margin-left:15px; margin-top:4px" class='demo_btn btn_repos_manage_verify'><b>校验</b></a>
+                    <a href='javascript:void(0)' style="float:left; margin-left:15px; margin-top:4px" class='demo_btn btn_repos_manage_recover'><b>恢复</b></a>
+                    <a href='javascript:void(0)' style="float:left; margin-left:15px; margin-top:4px" class='demo_btn btn_repos_manage_upgrade'><b>升级</b></a>
+                    <!--<a href='javascript:void(0)' style="float:right; margin-top:4px" class='demo_btn btn_repos_manage_close'><b>关闭</b></a>-->
+                    <div class="clear"> </div>
+                </div>
+            </div>
+		</div>
+
+<div class="div_overlay"></div>
+        <!----------------------------------------------------------->
+    
+    <script type='text/javascript'>
+		var tmp = null
+		var tmp1 = null
+		var tmp2 = null
+		
+		//		tmp = "a,b,c,d";
+		//		tmp1= tmp.split(",");
+		//		for(var i=0;i<tmp1.length;i++){
+		//			$("#tablerepos").append("<tr onClick='setColor(this);'><td class='repo-td'><div class='reposlogo'><img src='repos.png' /></div><div class='repos'>" + tmp1[i] + "</div><div class='reposcmd'><img class='btn_edit' src='reposedit.png' /><img class='btn_users' src='reposuser.png' /><img class='btn_del' src='reposdel.png' /></div></td></tr>");
+		//		}
+		
+		// get version
+		$.ajax({
+			url:'comcmd',
+			data:{cmd:'cat /opt/app/appinstalled/791 | grep plugin_VersionName | cut -d ":" -f2'},
+			dataType:'json',
+			type:'post',
+			success:function(r){
+				tmp = r.resdata.split("\n");
+				$('.versionNum').text("Version:"+tmp[0]);
+			}
+		})
+		
+		// function: get status
+		function getStatus(bHideLoadingIcon){
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/usr/local/app/xipk runstatus 791'},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					var tmp = r.resdata;
+					tmp1 = tmp.split("\n");
+					tmp2 = tmp1[tmp1.length-2].split(",");
+					tmp2 = tmp2[tmp2.length-1];
+					if(tmp2 == "0"){
+						//$('.runstatus').html("<img src='customimg?path=ExtremeSubversion/html/on.png' width='82' height='28' />");
+						//MM_swapImage('img_runstatus','','customimg?path=ExtremeSubversion/html/on.png',1)
+						//alert("已启动");
+						$('#img_runstatus').attr("src","customimg?path=ExtremeSubversion/html/on.png");
+						$('#img_runstatus').attr("title","已启动");
+					}else{
+						//$('.runstatus').html("<img src='customimg?path=ExtremeSubversion/html/off.png' width='82' height='28' />");
+						//alert("已停止");
+						$('#img_runstatus').attr("src","customimg?path=ExtremeSubversion/html/off.png");
+						$('#img_runstatus').attr("title","已停止");
+					}
+					if(bHideLoadingIcon){
+						$('.progress').hide();
+					}
+				}
+			})
+		}
+		
+		// get status
+		getStatus(false);
+		
+		// function: load Repos
+		function loadRepos(bHideLoadingIcon){
+			$('.a_repos').remove();
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_list.sh'},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					//alert(r.resdata);
+					var tmp = r.resdata;
+					if(tmp.length==0 || tmp=="\n"){
+						$('.progress').hide();
+						return;
+					}
+					//alert('[' + tmp + ']');
+					tmp = tmp.replace(/^\n+|\n+$/g,"");
+					//alert('[' + tmp + ']');
+					tmp1= tmp.split(",");
+					for(var i=0;i<tmp1.length;i++){
+						tmp2 = tmp1[i].split("|");
+						$("#tablerepos").append("<tr onClick='setColor(this);' class='a_repos'><td class='repo-td'><div class='reposlogo'><img src='customimg?path=ExtremeSubversion/html/repos.png' /></div><div class='repos'><a title='点击使用客户端浏览版本库' href='svn://" + window.location.hostname + "/" + tmp2[0] + "'>" + tmp2[0] + "</a></div><div class='reposrev' title='第" + tmp2[1] + "版 (" + tmp2[2] + ")" + "'>(Rev." + tmp2[1] + ")</div><div class='reposcmd'><img class='btn_edit' src='customimg?path=ExtremeSubversion/html/reposedit.png' alt='编辑' title='编辑'/><img class='btn_users' src='customimg?path=ExtremeSubversion/html/reposuser.png' alt='用户' title='用户'/><img class='btn_manage' src='customimg?path=ExtremeSubversion/html/reposmanage.png' alt='管理' title='管理'/><img class='btn_del' src='customimg?path=ExtremeSubversion/html/reposdel.png' alt='删除' title='删除'/></div></td></tr>");
+					}
+					if(bHideLoadingIcon){
+						$('.progress').hide();
+					}
+				}
+			})
+		}
+		
+		// load repos
+		loadRepos(true);
+		
+		// start thread
+		$('.start_thread').live('click',function(){
+			$('.progress').show();
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/usr/local/app/xipk start 791'},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					var tmp = r.resdata;
+					tmp1 = tmp.split("\n");
+					tmp2 = tmp1[tmp1.length-2];
+					if(tmp2.length == 7){
+						//window.location.reload();
+						getStatus(true);
+					}
+				}
+			})			
+		})
+
+		// stop thread
+		$('.stop_thread').live('click',function(){
+			$('.progress').show();
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/usr/local/app/xipk stop 791'},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					var tmp = r.resdata;
+					tmp1 = tmp.split("\n");
+					tmp2 = tmp1[tmp1.length-2];
+					if(tmp2.length == 7){
+						//window.location.reload();
+						getStatus(true);
+					}
+				}
+			})			
+		})
+
+
+		// open add_repos
+		$('.btn_add').live('click',function(){
+			$('#form_repos_add').css('visibility','visible');
+			$('.div_overlay').css('display','inherit');
+		})
+		
+		// close add_repos
+		$('.btn_repos_add_close').live('click',function(){
+			$('#form_repos_add').css('visibility','hidden');
+			$('.div_overlay').css('display','none');
+			$('.cfg_repos_add_name').val("");
+			$('.cfg_repos_add_anon').val("none");
+		})
+
+		// add_repos do
+		$('.btn_addrepos_do').live('click',function(){
+			// get val
+			var val0 = $('.cfg_repos_add_name').val();
+			var val1 = $('.cfg_repos_add_anon').val();
+			if(val0.match(/^[a-zA-Z0-9_]{1,32}$/)==null){		//版本库名称限定为：字母数字下划线,32个字符
+				return;
+			}
+			val0 = val0.replace(/(^\s*)|(\s*$)/g,'');	//trim
+			if(val0.length==0){
+				return;
+			}
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_add.sh '+val0+' '+val1},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					//alert(r.resdata);
+					var tmp = r.resdata;
+					if(tmp == "ok\n"){
+						//window.location.reload();
+						$('.progress').show();
+						$('#form_repos_add').css('visibility','hidden');
+						$('.div_overlay').css('display','none');
+						$('.cfg_repos_add_name').val("");
+						$('.cfg_repos_add_anon').val("none");
+						loadRepos(true);
+					}
+				}
+			})
+		})
+		
+		
+		// open edit_repos
+		$('.btn_edit').live('click',function(){
+			// alert('btn_edit ' + $("#reposid").val());
+			var val0 = $("#reposid").val();
+			$('.cfg_repos_edit_name').val($("#reposid").val())
+			$('.repos_edit_url').text('svn://' + window.location.hostname + '/'+$("#reposid").val());
+			$('.repos_edit_url').attr('href','svn://' + window.location.hostname + '/'+$("#reposid").val());
+			$('#form_repos_edit').css('visibility','visible');
+			$('.div_overlay').css('display','inherit');
+			$('.btn_editrepos_do').attr("disabled","disabled");
+			$('.repos_edit_loading').show();
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_load.sh ' + val0},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					//alert(r.resdata);
+					var tmp = r.resdata;
+					tmp = tmp.replace(/^\n+|\n+$/g,"");
+					tmp1 = tmp.split("=");
+					tmp1[1] = tmp1[1].replace(/(^\s*)|(\s*$)/g,'');	//trim
+					//alert("["+tmp1[1]+"]");
+					//$('.cfg_repos_edit_anon').val(tmp1[1]);
+					$('.cfg_repos_edit_anon option').attr("selected", false);
+					$(".cfg_repos_edit_anon option[value='" + tmp1[1] + "']").attr("selected", true);
+					$('.repos_edit_loading').hide();
+					$('.btn_editrepos_do').removeAttr("disabled");
+				}
+			})
+		})
+		
+		// close edit_repos
+		$('.btn_repos_edit_close').live('click',function(){
+			$('#form_repos_edit').css('visibility','hidden');
+			$('.div_overlay').css('display','none');
+		})
+		
+		// edit_repos do
+		$('.btn_editrepos_do').live('click',function(){
+			// get val
+			var val0 = $('.cfg_repos_edit_name').val();
+			var val1 = $('.cfg_repos_edit_anon').val();
+			//alert(val1);
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_edit.sh '+val0+' '+val1},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					//alert(r.resdata);
+					var tmp = r.resdata;
+					if(tmp == "ok\n"){
+						//window.location.reload();
+						$('#form_repos_edit').css('visibility','hidden');
+						$('.div_overlay').css('display','none');
+					}
+				}
+			})
+		})
+		
+		// open delete_repos
+		$('.btn_del').live('click',function(){
+			// alert('btn_delete ' + $("#reposid").val());
+			$('.cfg_repos_delete_name').val($("#reposid").val())
+			$('#form_repos_delete').css('visibility','visible');
+			$('.div_overlay').css('display','inherit');
+			$('.repos_delete_doing').hide();
+		})
+		
+		// close delete_repos
+		$('.btn_repos_delete_close').live('click',function(){
+			$('#form_repos_delete').css('visibility','hidden');
+			$('.div_overlay').css('display','none');
+		})
+		
+		//delete_repos do
+		$('.btn_deleterepos_do').live('click',function(){
+			//alert('btn_del ' + $("#reposid").val());
+			var val0 = $("#reposid").val();
+			//var isSure = confirm('警告：操作不可撤销！\n确实要删除版本库 '+val0+' 吗？');
+			//if(isSure){
+				$('.repos_delete_doing').show();
+				$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_delete.sh '+val0},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						//alert(r.resdata);
+						var tmp = r.resdata;
+						if(tmp == "ok\n"){
+							//window.location.reload();
+							$('.progress').show();
+							$('#form_repos_delete').css('visibility','hidden');
+							$('.div_overlay').css('display','none');
+							loadRepos(true);
+						}
+					}
+				})
+			//}
+		})
+		
+		function reloadUsers(){
+			var val0 = $("#reposid").val();
+			$('.users_edit_loading').show();
+			$('.cfg_users_add_name').val("");
+			$('.cfg_users_add_pwd').val("");
+			$('.a_user').remove();
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/opt/app/ExtremeSubversion/bin/user_list.sh ' + val0},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					//alert(r.resdata);
+					var tmp = r.resdata;
+					tmp = tmp.replace(/^\n+|\n+$/g,"");
+					tmp1 = tmp.split(",");
+					for(var i=0;i<tmp1.length;i++){
+						tmp2 = tmp1[i].split("=");
+						//alert(tmp2[0] + ":" + tmp2[1]);
+						if(tmp2[0]!="" && tmp2[1]!=""){
+							$("#users_edit_title").after("<div class='section a_user' style='padding-right:0.8em'><div class='input-sign details'><input type='text' class='cfg_users_edit_name' readonly='readonly' title='用户名' value='" + tmp2[0] + "' placeholder='用户名' required='required'/></div><div class='input-sign details1'><input type='text' placeholder='密码' class='cfg_users_edit_pwd' style='ime-mode:disabled' title='密码：只能包含字母、数字，不超过32个字符' value='" + tmp2[1] + "' required='required' currpwd='" + tmp2[1] + "'/></div><div style='float:right;padding-top:9px; padding-left:7px;'><a href='javascript:void(0)' class='btn_users_edit_del' title='删除'><img src='customimg?path=ExtremeSubversion/html/minus.png' width='24' height='24' border='0'/></a></div><div style='clear:both'> </div></div>");
+						}
+					}
+					$('.users_edit_loading').hide();
+					$(window).resize();
+				}
+			})
+		}
+		
+		//open edit_user
+		$('.btn_users').live('click',function(){
+			//alert('btn_users ' + $("#reposid").val());
+			$('#form_users_edit').css('visibility','visible');
+			$('.div_overlay').css('display','inherit');
+			reloadUsers();
+		})
+		
+		// close edit_user
+		$('.btn_users_edit_close').live('click',function(){
+			$('#form_users_edit').css('visibility','hidden');
+			$('.div_overlay').css('display','none');
+		})
+		
+		//add user
+		$('.btn_users_edit_add').live('click',function(){
+			var val0 = $("#reposid").val();
+			
+			var val1 = $(this).parent().parent().find('.cfg_users_add_name').val();
+			if(val1.match(/^[a-zA-Z0-9_]{1,32}$/)==null){		//用户名限定为：字母数字下划线,32个字符
+				return;
+			}
+			val1 = val1.replace(/(^\s*)|(\s*$)/g,'');	//trim
+			
+			var val2 = $(this).parent().parent().find('.cfg_users_add_pwd').val();
+			if(val2.match(/^[a-zA-Z0-9]{1,32}$/)==null){		//密码限定为：字母数字,32个字符
+				return;
+			}
+			val2 = val2.replace(/(^\s*)|(\s*$)/g,'');	//trim
+			
+			//alert('add user:' + val0 + ' ' + val1 + ' ' + val2);
+			if(val1.length==0 || val2.length==0){
+				return;
+			}
+			$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/user_add.sh '+ val0 + ' ' + val1 + ' ' + val2},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						//alert(r.resdata);
+						var tmp = r.resdata;
+						if(tmp == "ok\n")
+							reloadUsers();
+					}
+			})
+		})
+		
+		//delete user
+		$('.btn_users_edit_del').live('click',function(){
+		   	var val0 = $("#reposid").val();
+			var val1 = $(this).parent().parent().find('.cfg_users_edit_name').val()
+			//alert('delete user:' + val0 + ' ' + val1);
+			//$(this).parent().parent().find('.cfg_users_edit_pwd').val();
+			$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/user_delete.sh '+ val0 + ' ' + val1},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						//alert(r.resdata);
+						var tmp = r.resdata;
+						if(tmp == "ok\n")
+							reloadUsers();
+					}
+			})
+		})
+		
+		//edit user
+		//自动改密时机：用户离开编辑框，并且修改了密码
+		$('.cfg_users_edit_pwd').live('blur',function(){
+			obj_text = this;
+			var val0 = $("#reposid").val();
+			
+			var val1 = $(this).parent().parent().find('.cfg_users_edit_name').val();
+			if(val1.match(/^[a-zA-Z0-9_]{1,32}$/)==null){		//用户名限定为：字母数字下划线,32个字符
+				//用户名字段是锁定的，如果出现了违反约束，意味着用户直接hack了网页
+				return;
+			}
+			
+			var currpwd = $(this).attr("currpwd");		//用自定义属性判断内容是否改变了
+			var newpwd = $(this).val();
+			newpwd = newpwd.replace(/(^\s*)|(\s*$)/g,'');	//trim
+			if(newpwd.length==0){
+				$(this).val(currpwd);
+				return;
+			}
+			if(newpwd.match(/^[a-zA-Z0-9]{1,32}$/)==null){		//密码限定为：字母数字,32个字符
+				$(this).val(currpwd);
+				return;
+			}
+			
+			if(currpwd != newpwd){
+				//alert('edit user:' + val0 + ' ' + val1 + ' ' + newpwd);
+				$('.users_edit_loading').show();
+				$(this).attr("style","font-style: italic; color: #f00;");
+				$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/user_chgpwd.sh '+ val0 + ' ' + val1 + ' ' + newpwd},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						//alert(r.resdata);
+						var tmp = r.resdata;
+						if(tmp == "ok\n"){
+							//reloadUsers();
+							//alert(newpwd);
+							//do NOT use "this" directly, it will return ajax object.
+							$(obj_text).removeAttr("style");
+							$(obj_text).attr("currpwd",newpwd);
+							$('.users_edit_loading').hide();
+						}
+					}
+				})
+			}
+		})
+		
+		// open manage_repos
+		$('.btn_manage').live('click',function(){
+			var val0 = $("#reposid").val();
+			$('#repos_manage_name').text(val0);
+			$('#repos_manage_size').text("");
+			$('#repos_manage_author').text("");
+			$('#repos_manage_revision').text("");
+			$('#repos_manage_timestamp').text("");
+			//$('.repos_edit_url').attr('href','svn://' + window.location.hostname + '/'+$("#reposid").val());
+			$('#form_repos_manage').css('visibility','visible');
+			$('.div_overlay').css('display','inherit');
+			$('.repos_manage_loading').show();
+			$.ajax({
+				url:'comcmd',
+				data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_manage_load.sh ' + val0},
+				dataType:'json',
+				type:'post',
+				success:function(r){
+					//alert(r.resdata);
+					var tmp = r.resdata;
+					tmp = tmp.replace(/^\n+|\n+$/g,"");
+					tmp1 = tmp.split("|");
+					$('#repos_manage_size').text(tmp1[0]);
+					$('#repos_manage_author').text(tmp1[1]);
+					$('#repos_manage_revision').text(tmp1[2]);
+					$('#repos_manage_timestamp').text(tmp1[3]);
+					$('.repos_manage_loading').hide();
+				}
+			})
+		})
+		
+		// close manage_repos
+		$('.btn_repos_manage_close').live('click',function(){
+			$('#form_repos_manage').css('visibility','hidden');
+			$('.div_overlay').css('display','none');
+		})
+		
+		//verify repos
+		$('.btn_repos_manage_verify').live('click',function(){
+			var val0 = $("#reposid").val();
+			var isSure = confirm('确实要校验版本库 ' + val0 + ' 吗？');
+			if(isSure){
+				$('.repos_manage_loading').show();
+				$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_manage_verify.sh '+val0},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						var tmp = r.resdata;
+						if(tmp == "ok\n"){
+							$('.repos_manage_loading').hide();
+						}
+					}
+				})
+			}
+		})
+		
+		//recover repos
+		$('.btn_repos_manage_recover').live('click',function(){
+			var val0 = $("#reposid").val();
+			var isSure = confirm('确实要恢复版本库 ' + val0 + ' 吗？');
+			if(isSure){
+				$('.repos_manage_loading').show();
+				$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_manage_recover.sh '+val0},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						var tmp = r.resdata;
+						if(tmp.indexOf("Recovery completed.")>0){
+							$('.repos_manage_loading').hide();
+						}
+					}
+				})
+			}
+		})
+		
+		//upgrade repos
+		$('.btn_repos_manage_upgrade').live('click',function(){
+			var val0 = $("#reposid").val();
+			var isSure = confirm('确实要升级版本库 ' + val0 + ' 吗？');
+			if(isSure){
+				$('.repos_manage_loading').show();
+				$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_manage_upgrade.sh '+val0},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						var tmp = r.resdata;
+						if(tmp.indexOf("Upgrade completed.")>0){
+							$('.repos_manage_loading').hide();
+						}
+					}
+				})
+			}
+		})
+		
+		//pack repos
+		$('.btn_repos_manage_pack').live('click',function(){
+			var val0 = $("#reposid").val();
+			var isSure = confirm('确实要打包版本库 ' + val0 + ' 吗？\n打包文件位于U盘根目录，打包完毕后将自动开始下载！');
+			if(isSure){
+				$('.repos_manage_loading').show();
+				$.ajax({
+					url:'comcmd',
+					data:{cmd:'/opt/app/ExtremeSubversion/bin/repos_manage_pack.sh '+val0},
+					dataType:'json',
+					type:'post',
+					success:function(r){
+						var tmp = r.resdata;
+						tmp = tmp.replace(/^\n+|\n+$/g,"");
+						tmp1 = tmp.split("|");
+						if(tmp1[0] == "ok"){
+							$('.repos_manage_loading').hide();
+							window.open ('/' + tmp1[1]);
+						}
+					}
+				})
+			}
+		})
+		
+		// check new version
+		$.ajax({
+			url:'comcmd',
+			data:{cmd:'/opt/app/ExtremeSubversion/bin/upgrade_check.sh'},
+			dataType:'json',
+			type:'post',
+			success:function(r){
+				var tmp = r.resdata;
+				tmp = tmp.replace(/^\n+|\n+$/g,"");
+				if(tmp != "no"){
+					$('#upgradeTip').css('visibility','visible');
+					$('#upgradeTip').attr("title","有更新：" + tmp);
+				}
+			}
+		})
+		
+		// center the dialog when window size changed
+		$(window).resize(function(){
+			$('#form_users_edit').css({ 
+			position:'absolute', 
+			left: ($(window).width() - $('#form_users_edit').outerWidth())/2, 
+			top: ($(window).height() - $('#form_users_edit').outerHeight())/2 + $(document).scrollTop() 
+			});
+			$('#form_repos_add').css({ 
+			position:'absolute', 
+			left: ($(window).width() - $('#form_repos_add').outerWidth())/2, 
+			top: ($(window).height() - $('#form_repos_add').outerHeight())/2 + $(document).scrollTop() 
+			});
+			$('#form_repos_edit').css({ 
+			position:'absolute', 
+			left: ($(window).width() - $('#form_repos_edit').outerWidth())/2, 
+			top: ($(window).height() - $('#form_repos_edit').outerHeight())/2 + $(document).scrollTop() 
+			});
+			$('#form_repos_delete').css({ 
+			position:'absolute', 
+			left: ($(window).width() - $('#form_repos_delete').outerWidth())/2, 
+			top: ($(window).height() - $('#form_repos_delete').outerHeight())/2 + $(document).scrollTop() 
+			});
+			$('#form_repos_manage').css({ 
+			position:'absolute', 
+			left: ($(window).width() - $('#form_repos_manage').outerWidth())/2, 
+			top: ($(window).height() - $('#form_repos_manage').outerHeight())/2 + $(document).scrollTop() 
+			});
+		}); 
+		//初始化函数
+		$(window).resize();
+		
+		</script>
+	</body>
+
+</html>

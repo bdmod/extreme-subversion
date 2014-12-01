@@ -1,0 +1,2 @@
+config svnserver
+	option port	'3690'
